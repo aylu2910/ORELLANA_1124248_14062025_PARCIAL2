@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Script para aplicar el tema oscuro inmediatamente si está guardado en localStorage
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="px-4 md:px-0 transition-colors duration-300">
+  <div
+    class="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-gray-900 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px] transition-colors duration-300">
+    <div
+      class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 dark:bg-fuchsia-600 opacity-20 blur-[100px] transition-colors duration-300">
+    </div>
+  </div>
+
+  <!-- Header mejorado con botones de tema -->
+  <header
+    class="fixed top-0 z-10 w-full mx-auto mt-2 md:bg-white/70 md:dark:bg-gray-800/70 md:backdrop-blur-sm rounded-lg shadow-sm transition-colors duration-300">
+    <!-- Desktop navigation -->
+    <nav
+      class="hidden md:flex px-3 text-md font-bold rounded-full text-pink-400 dark:text-pink-300 justify-center items-center relative">
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="index.html">Home</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="avisos.html">Avisos</a>
+      <a id="sobremi-link"
+        class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="sobremi.html">Sobre mi</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="materias2025.html">Materias 2025</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-400 dark:hover:text-pink-300"
+        href="contacto.html">Contacto</a>
+
+      <!-- Botones de tema para desktop -->
+      <div class="absolute right-4 flex items-center space-x-2">
+        <button id="light-mode-btn"
+          class="p-2 rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-800 transition-all duration-300 transform hover:scale-110"
+          title="Modo Claro">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button id="dark-mode-btn"
+          class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110"
+          title="Modo Oscuro">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile navigation dropdown -->
+    <div class="md:hidden flex justify-between items-center px-8 py-2">
+      <div class="relative">
+        <button id="mobile-menu-button"
+          class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border border-pink-200 dark:border-pink-700 rounded-md focus:outline-none shadow-sm hover:bg-pink-400 dark:hover:bg-pink-600 transition-colors duration-300">
+          <span>Menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-menu"
+          class="absolute hidden -left-8 w-48 py-2 mt-2 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-pink-100 dark:border-pink-700 transition-colors duration-300">
+          <a href="index.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Home</a>
+          <a href="avisos.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Avisos</a>
+          <a href="sobremi.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Sobre
+            mi</a>
+          <a href="materias2025.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Materias
+            2025</a>
+          <a href="contacto.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Contacto</a>
+          <a href="disenioYdesarrolloWeb.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Diseño
+            y Desarrollo Web</a>
+        </div>
+      </div>
+      <!-- Botones de tema para mobile -->
+      <div class="flex items-center space-x-2">
+        <button id="light-mode-btn-mobile"
+          class="p-2 rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-800 transition-all duration-300"
+          title="Modo Claro">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button id="dark-mode-btn-mobile"
+          class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300"
+          title="Modo Oscuro">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex flex-col items-center justify-center mt-24 md:mt-20">
+    <div class="w-full md:max-w-3xl lg:max-w-2xl mx-auto overflow-x-auto">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 dark:text-gray-300 uppercase bg-pink-400 dark:bg-pink-600">
+            <tr>
+              <th scope="col" class="px-3 py-2 md:px-6 md:py-3 text-white">
+                Nombre
+              </th>
+              <th scope="col" class="px-3 py-2 md:px-6 md:py-3 text-white">
+                Día
+              </th>
+              <th scope="col" class="px-3 py-2 md:px-6 md:py-3 text-white">
+                Horario
+              </th>
+              <th scope="col" class="px-3 py-2 md:px-6 md:py-3 text-white">
+                Modalidad
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
+              <th scope="row"
+                class="px-3 py-2 md:px-6 md:py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-normal md:whitespace-nowrap">
+                Testing de Aplicaciones
+              </th>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Lunes
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                18.30 hrs.
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Virtual
+              </td>
+            </tr>
+            <tr
+              class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
+              <th scope="row"
+                class="px-3 py-2 md:px-6 md:py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-normal md:whitespace-nowrap">
+                Paradigma orientado a Objetos
+              </th>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Martes
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                18.30 hrs.
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Virtual
+              </td>
+            </tr>
+            <tr
+              class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
+              <th scope="row"
+                class="px-3 py-2 md:px-6 md:py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-normal md:whitespace-nowrap">
+                Marketing
+              </th>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Miércoles
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                18.30 hrs.
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Virtual
+              </td>
+            </tr>
+            <tr
+              class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
+              <th scope="row"
+                class="px-3 py-2 md:px-6 md:py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-normal md:whitespace-nowrap">
+                Redes de Datos
+              </th>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Jueves
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                18.30 hrs.
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Virtual
+              </td>
+            </tr>
+            <tr
+              class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
+              <th scope="row"
+                class="px-3 py-2 md:px-6 md:py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-normal md:whitespace-nowrap">
+                Diseño y Desarrollo Web
+              </th>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Viernes
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                18.30 hrs.
+              </td>
+              <td class="px-3 py-2 md:px-6 md:py-4 text-gray-700 dark:text-gray-300">
+                Virtual
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-3/5 flex justify-center items-end 
+         bg-pink-50 dark:bg-gray-800 p-4 mb-4 text-center rounded-lg shadow-sm 
+         border border-pink-100 dark:border-pink-700 transition-colors duration-300 z-50">
+    <p class="text-base font-semibold text-pink-500 dark:text-pink-400">
+      Curso: 15130 / Profesora: Patricia Litovicius
+    </p>
+  </footer>
+
+  <script src=" index.js">
+  </script>
+</body>
+
+</html>

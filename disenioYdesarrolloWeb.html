@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diseño y Desarrollo Web</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Script para aplicar el tema oscuro inmediatamente si está guardado en localStorage
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="px-4 md:px-0 transition-colors duration-300">
+  <div
+    class="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-gray-900 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:14px_24px] transition-colors duration-300">
+    <div
+      class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 dark:bg-fuchsia-600 opacity-20 blur-[100px] transition-colors duration-300">
+    </div>
+  </div>
+
+  <!-- Header mejorado con botones de tema -->
+  <header
+    class="fixed top-0 z-10 w-full mx-auto mt-2 md:bg-white/70 md:dark:bg-gray-800/70 md:backdrop-blur-sm rounded-lg shadow-sm transition-colors duration-300">
+    <!-- Desktop navigation -->
+    <nav
+      class="hidden md:flex px-3 text-md font-bold rounded-full text-pink-400 dark:text-pink-300 justify-center items-center relative">
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="index.html">Home</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="avisos.html">Avisos</a>
+      <a id="sobremi-link"
+        class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="sobremi.html">Sobre mi</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-500 dark:hover:text-pink-400"
+        href="materias2025.html">Materias 2025</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-400 dark:hover:text-pink-300"
+        href="contacto.html">Contacto</a>
+      <a class="relative block px-6 md:px-10 py-2 text-l opacity-90 text-wrap hover:text-pink-400 dark:hover:text-pink-300 active"
+        href="disenioYdesarrolloWeb.html">Diseño y Desarrollo Web</a>
+
+      <!-- Botones de tema para desktop -->
+      <div class="absolute right-4 flex items-center space-x-2">
+        <button id="light-mode-btn"
+          class="p-2 rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-800 transition-all duration-300 transform hover:scale-110"
+          title="Modo Claro">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button id="dark-mode-btn"
+          class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-110"
+          title="Modo Oscuro">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile navigation dropdown -->
+    <div class="md:hidden flex justify-between items-center px-8 py-2">
+      <div class="relative">
+        <button id="mobile-menu-button"
+          class="flex items-center px-4 py-2 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border border-pink-200 dark:border-pink-700 rounded-md focus:outline-none shadow-sm hover:bg-pink-400 dark:hover:bg-pink-600 transition-colors duration-300">
+          <span>Menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-menu"
+          class="absolute hidden -left-8 w-48 py-2 mt-2 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-pink-100 dark:border-pink-700 transition-colors duration-300">
+          <a href="index.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Home</a>
+          <a href="avisos.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Avisos</a>
+          <a href="sobremi.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Sobre
+            mi</a>
+          <a href="materias2025.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Materias
+            2025</a>
+          <a href="contacto.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300">Contacto</a>
+          <a href="disenioYdesarrolloWeb.html"
+            class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-pink-100 dark:hover:bg-pink-600 transition-colors duration-300 active">Diseño
+            y Desarrollo Web</a>
+        </div>
+      </div>
+      <!-- Botones de tema para mobile -->
+      <div class="flex items-center space-x-2">
+        <button id="light-mode-btn-mobile"
+          class="p-2 rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-800 transition-all duration-300"
+          title="Modo Claro">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd"
+              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button id="dark-mode-btn-mobile"
+          class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300"
+          title="Modo Oscuro">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex flex-col items-center justify-center mt-24 md:mt-20 dark:text-white pb-20">
+    <div class="text-center py-8">
+      <h1 class="text-4xl font-bold text-pink-700 relative inline-block dark:text-pink-300">
+        Diseño y Desarrollo Web
+        <span class="absolute bottom-0 left-0 w-full h-1 bg-pink-200 rounded-full dark:bg-pink-700"></span>
+      </h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 w-full md:max-w-6xl px-4">
+      <div class="space-y-6">
+        <!-- Sección - Fecha de exámenes -->
+        <div
+          class="bg-white p-6 rounded-lg shadow-sm border border-pink-100 hover:shadow-md transition duration-300 dark:bg-gray-800 dark:border-pink-700">
+          <h2
+            class="text-2xl font-semibold text-pink-700 mb-4 border-b border-pink-100 pb-2 dark:text-pink-400 dark:border-pink-500">
+            Fechas de exámenes</h2>
+          <ul class="space-y-3 text-gray-700 dark:text-gray-200">
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Primer parcial:</span> 25 de abril de
+              2025
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Segundo parcial:</span> 13 de junio de
+              2025
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Final anticipado:</span> 4 de julio de
+              2025
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Final:</span> 18 de julio de 2025
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sección - Bibliografía -->
+        <div
+          class="bg-white p-6 rounded-lg shadow-sm border border-pink-100 hover:shadow-md transition duration-300 dark:bg-gray-800 dark:border-pink-700">
+          <h2
+            class="text-2xl font-semibold text-pink-700 mb-4 border-b border-pink-100 pb-2 dark:text-pink-400 dark:border-pink-500">
+            Bibliografía</h2>
+          <ul class="space-y-3 text-gray-700 dark:text-gray-200">
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Título:</span> HTML5 y CSS3: Diseño y
+              desarrollo web
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Autor:</span> Elizabeth Castro
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Título:</span> JavaScript: La guía
+              definitiva
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Autor:</span> David Flanagan
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Título:</span> Responsive Web Design
+            </li>
+            <li class="flex items-start">
+              <span class="font-medium mr-2 text-pink-600 dark:text-pink-300">• Autor:</span> Ethan Marcotte
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sección - Actividades UVAs -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-sm border border-pink-100 h-full hover:shadow-md transition duration-300 dark:bg-gray-800 dark:border-pink-700">
+        <h2
+          class="text-2xl font-semibold text-pink-700 mb-4 border-b border-pink-100 pb-2 dark:text-pink-400 dark:border-pink-500">
+          Actividades UVAs</h2>
+        <div class="space-y-4">
+          <div class="border-b border-pink-50 pb-4 dark:border-gray-600">
+            <h3 class="text-lg font-medium text-pink-600 dark:text-pink-300 flex items-center flex-wrap w-full">
+              <a href="https://github.com/aylu2910/ORELLANA_-1124248_11042025_IntroaHTML"
+                class="text-blue-600 dark:text-blue-400 hover:underline">HTML - Introducción 📝</a>
+              <span class="flex space-x-2 mt-2 md:mt-0 md:ml-auto">
+                <a href="https://github.com/aylu2910/tu-primer-repo-github" target="_blank" class="pill-button">
+                  GitHub
+                </a>
+                <a href="https://github.com/aylu2910/tu-segundo-repo-github" target="_blank" class="pill-button">
+                  Pages
+                </a>
+              </span>
+            </h3>
+          </div>
+
+          <div class="border-b border-pink-50 pb-4 dark:border-gray-600">
+            <h3 class="text-lg font-medium text-pink-600 dark:text-pink-300 flex items-center flex-wrap w-full">
+              <a href="https://github.com/aylu2910/ORELLANA_-1124248_26042025_HTMLEtiquetas"
+                class="text-blue-600 dark:text-blue-400 hover:underline">HTML - Etiquetas 📝</a>
+              <span class="flex space-x-2 mt-2 md:mt-0 md:ml-auto">
+                <a href="https://github.com/aylu2910/tu-primer-repo-github" target="_blank" class="pill-button">
+                  GitHub
+                </a>
+                <a href="https://github.com/aylu2910/tu-segundo-repo-github" target="_blank" class="pill-button">
+                  Pages
+                </a>
+              </span>
+            </h3>
+          </div>
+
+          <div class="border-b border-pink-50 pb-4 dark:border-gray-600">
+            <h3 class="text-lg font-medium text-pink-600 dark:text-pink-300 flex items-center flex-wrap w-full">
+              <a href="https://github.com/aylu2910/ORELLANA_1124248_24042025_Integracion"
+                class="text-blue-600 dark:text-blue-400 hover:underline">Ejercicio integrador
+                📝(obligatorio)</a>
+              <span class="flex space-x-2 mt-2 md:mt-0 md:ml-auto">
+                <a href="https://github.com/aylu2910/tu-primer-repo-github" target="_blank" class="pill-button">
+                  GitHub
+                </a>
+                <a href="https://github.com/aylu2910/tu-segundo-repo-github" target="_blank" class="pill-button">
+                  Pages
+                </a>
+              </span>
+            </h3>
+          </div>
+          <div class="border-b border-pink-50 pb-4 dark:border-gray-600">
+            <h3 class="text-lg font-medium text-pink-600 dark:text-pink-300 flex items-center flex-wrap w-full">
+              <a href="https://github.com/aylu2910/ORELLANA_-1124248_24042025_Formatodetexto"
+                class="text-blue-600 dark:text-blue-400 hover:underline">Formato de texto 📝
+              </a>
+              <span class="flex space-x-2 mt-2 md:mt-0 md:ml-auto">
+                <a href="https://github.com/aylu2910/tu-primer-repo-github" target="_blank" class="pill-button">
+                  GitHub
+                </a>
+                <a href="https://github.com/aylu2910/tu-segundo-repo-github" target="_blank" class="pill-button">
+                  Pages
+                </a>
+              </span>
+            </h3>
+          </div>
+          <div class="border-b border-pink-50 pb-4 dark:border-gray-600">
+            <h3 class="text-lg font-medium text-pink-600 dark:text-pink-300 flex items-center flex-wrap w-full">
+              <a href="https://github.com/aylu2910/ORELLANA_1124248_24042025_Formatodecajas"
+                class="text-blue-600 dark:text-blue-400 hover:underline">Formato de cajas 📝
+              </a>
+              <span class="flex space-x-2 mt-2 md:mt-0 md:ml-auto">
+                <a href="https://github.com/aylu2910/tu-primer-repo-github" target="_blank" class="pill-button">
+                  GitHub
+                </a>
+                <a href="https://github.com/aylu2910/tu-segundo-repo-github" target="_blank" class="pill-button">
+                  Pages
+                </a>
+              </span>
+            </h3>
+          </div>
+          <div class="border-b border-pink-50 pb-4 dark:border-gray-600">
+            <h3 class="text-lg font-medium text-pink-600 dark:text-pink-300 flex items-center flex-wrap w-full">
+              <a href="https://github.com/aylu2910/ORELLANA_1124248_24042025_GridYFlexbox"
+                class="text-blue-600 dark:text-blue-400 hover:underline">Grid y Flexbox 📝
+              </a>
+              <span class="flex space-x-2 mt-2 md:mt-0 md:ml-auto">
+                <a href="https://github.com/aylu2910/tu-primer-repo-github" target="_blank" class="pill-button">
+                  GitHub
+                </a>
+                <a href="https://github.com/aylu2910/tu-segundo-repo-github" target="_blank" class="pill-button">
+                  Pages
+                </a>
+              </span>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-3/5 flex justify-center items-end 
+         bg-pink-50 dark:bg-gray-800 p-4 mb-4 text-center rounded-lg shadow-sm 
+         border border-pink-100 dark:border-pink-700 transition-colors duration-300 z-50">
+    <p class="text-base font-semibold text-pink-500 dark:text-pink-400">
+      Curso: 15130 / Profesora: Patricia Litovicius
+    </p>
+  </footer>
+
+  <!-- JavaScript para menú con dropdown en mobile -->
+  <script src="index.js"></script>
+</body>
+
+</html>

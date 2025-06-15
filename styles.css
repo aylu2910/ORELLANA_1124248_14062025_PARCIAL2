@@ -1,0 +1,50 @@
+.active {
+  background-color: #f472b6;
+  /* pink-400 en Tailwind */
+  color: #ffffff;
+  /* blanco */
+  border-radius: 9999px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.dark .active {
+  background-color: #be185d;
+  /* pink-700 en Tailwind */
+  color: #ffffff;
+  /* blanco */
+}
+
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  /* px-3 py-1 */
+  border-radius: 9999px;
+  /* rounded-full */
+  font-size: 0.875rem;
+  /* text-sm */
+  font-weight: 500;
+  /* font-medium */
+  background-color: #fce7f3;
+  /* bg-pink-100 */
+  color: #db2777;
+  /* text-pink-700 */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.pill-button:hover {
+  background-color: #fbcfe8;
+  /* hover:bg-pink-200 */
+}
+
+.dark .pill-button {
+  background-color: #be185d;
+  /* dark:bg-pink-700 */
+  color: #ffffff;
+  /* dark:text-white */
+}
+
+.dark .pill-button:hover {
+  background-color: #9d174d;
+  /* dark:hover:bg-pink-600 */
+}
