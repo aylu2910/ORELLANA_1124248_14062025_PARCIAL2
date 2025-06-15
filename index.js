@@ -1,4 +1,4 @@
-// Sistema de gestión de tema (claro/oscuro)
+// ------------------LOGICA PARA MANEJO DE PERSISTENCIA ENTRE PAGINAS CON TEMA CLARO/OSCURO ----------------------
 class ThemeManager {
   constructor() {
     this.init();
@@ -107,18 +107,10 @@ function highlightCurrentPage() {
   navLinks.forEach((link) => {
     // Elimina cualquier clase 'active' o de resaltado anterior
     link.classList.remove("active");
-
     // Compara el nombre del archivo del enlace con el de la página actual
     const linkPath = link.href.split("/").pop();
-    console.log(
-      "Link Path:",
-      linkPath,
-      "- Is active:",
-      linkPath === currentPath
-    );
     if (linkPath === currentPath) {
       link.classList.add("active"); // Solo añade la clase 'active'
-      console.log("Applied classes to active link:", link.classList);
     }
   });
 }
@@ -139,7 +131,8 @@ buttons.forEach((btn) => {
   });
 });
 
-// Validación y manejo del formulario de contacto
+// ----------------- VALIDACIÓN DE FORMULARIO----------------------
+
 const form = document.querySelector("form");
 if (form) {
   form.addEventListener("submit", function (e) {
